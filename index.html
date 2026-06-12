@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOPIK Ace — Монголчуудад зориулсан солонгос хэлний апп</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,500;0,700;0,900;1,500&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif+KR:wght@700;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #FAF6EF;
+      --paper-deep: #F3EDE2;
+      --ink: #211D17;
+      --ink-soft: #6B6358;
+      --red: #C8402F;
+      --red-deep: #A82F20;
+      --blue: #2C4A8A;
+      --line: #E3DACA;
+      --gold: #C9A227;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans', -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .serif {
+      font-family: 'Noto Serif', 'Noto Serif KR', Georgia, serif;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ===== TOP MARQUEE ===== */
+    .marquee {
+      background: var(--ink);
+      color: var(--paper);
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 9px 0;
+      text-transform: uppercase;
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: scroll 28s linear infinite;
+    }
+
+    .marquee-inner span {
+      margin: 0 28px;
+    }
+
+    .marquee-inner .dot {
+      color: var(--red);
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-family: 'Noto Serif', serif;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .logo em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .logo .hanja {
+      font-size: 13px;
+      color: var(--ink-soft);
+      font-weight: 500;
+      margin-left: 10px;
+      letter-spacing: 2px;
+    }
+
+    .nav-date {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-date b {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+      padding: 76px 0 64px;
+      position: relative;
+    }
+
+    .hero-bg-char {
+      position: absolute;
+      right: -60px;
+      top: -30px;
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 900;
+      font-size: 380px;
+      color: var(--paper-deep);
+      line-height: 1;
+      z-index: 0;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 26px;
+    }
+
+    .kicker::before {
+      content: '';
+      width: 36px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    h1 {
+      font-family: 'Noto Serif', 'Noto Serif KR', serif;
+      font-size: clamp(38px, 5.4vw, 62px);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    h1 .underline {
+      position: relative;
+      white-space: nowrap;
+    }
+
+    h1 .underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 6px;
+      height: 12px;
+      background: rgba(200, 64, 47, 0.18);
+      z-index: -1;
+    }
+
+    .hero p.lede {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 480px;
+      margin-bottom: 38px;
+    }
+
+    /* countdown — ticket style */
+    .ticket {
+      display: inline-flex;
+      align-items: stretch;
+      border: 1.5px solid var(--ink);
+      background: #fff;
+      box-shadow: 5px 5px 0 var(--ink);
+      margin-bottom: 38px;
+    }
+
+    .ticket-label {
+      background: var(--ink);
+      color: var(--paper);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 10px 7px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .ticket-cells {
+      display: flex;
+    }
+
+    .t-cell {
+      padding: 14px 18px;
+      text-align: center;
+      min-width: 76px;
+      border-left: 1.5px dashed var(--line);
+    }
+
+    .t-cell:first-child {
+      border-left: none;
+    }
+
+    .t-num {
+      font-family: 'Noto Serif', serif;
+      font-size: 30px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+    }
+
+    .t-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+
+    /* signup */
+    .signup-row {
+      display: flex;
+      gap: 0;
+      max-width: 470px;
+    }
+
+    .signup-row input {
+      flex: 1;
+      padding: 16px 18px;
+      font-size: 15px;
+      border: 1.5px solid var(--ink);
+      border-right: none;
+      background: #fff;
+      outline: none;
+      font-family: inherit;
+      min-width: 0;
+    }
+
+    .signup-row input::placeholder {
+      color: #A89E8F;
+    }
+
+    .signup-row button {
+      padding: 16px 26px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      border: 1.5px solid var(--ink);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+
+    .signup-row button:hover {
+      background: var(--red-deep);
+    }
+
+    .signup-row button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    /* honeypot — хүний нүдэнд харагдахгүй, bot-ууд бөглөдөг */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      height: 0;
+      width: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .signup-msg {
+      font-size: 14px;
+      margin-top: 12px;
+      min-height: 22px;
+      font-weight: 600;
+    }
+
+    .signup-msg.ok {
+      color: #2A7D46;
+    }
+
+    .signup-msg.err {
+      color: var(--red);
+    }
+
+    .signup-counter {
+      margin-top: 6px;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+    }
+
+    .signup-counter b {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .signup-counter .live {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-right: 7px;
+      animation: blink 1.8s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.25;
+      }
+    }
+
+    /* ===== PHONE MOCKUP ===== */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone {
+      width: 272px;
+      background: var(--ink);
+      border-radius: 38px;
+      padding: 11px;
+      box-shadow: 14px 18px 0 rgba(33, 29, 23, 0.1);
+      transform: rotate(2.5deg);
+      transition: transform .4s;
+    }
+
+    .phone:hover {
+      transform: rotate(0deg) translateY(-4px);
+    }
+
+    .phone-screen {
+      background: var(--paper);
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 20px 16px 22px;
+    }
+
+    .ph-status {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .ph-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .ph-progress {
+      height: 5px;
+      background: var(--paper-deep);
+      border-radius: 10px;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .ph-progress i {
+      display: block;
+      height: 100%;
+      width: 64%;
+      background: var(--red);
+      border-radius: 10px;
+    }
+
+    .ph-card {
+      background: #fff;
+      border: 1.5px solid var(--ink);
+      border-radius: 16px;
+      padding: 26px 16px;
+      text-align: center;
+      box-shadow: 4px 4px 0 var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .ph-kr {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .ph-rom {
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin: 2px 0 12px;
+    }
+
+    .ph-divider {
+      width: 28px;
+      height: 2px;
+      background: var(--red);
+      margin: 0 auto 12px;
+    }
+
+    .ph-mn {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .ph-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .ph-btn {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 11px 0;
+      border-radius: 10px;
+      border: 1.5px solid var(--ink);
+    }
+
+    .ph-btn.no {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .ph-btn.yes {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .phone-tag {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 7px 16px;
+      text-transform: uppercase;
+      border: 1.5px solid var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+      white-space: nowrap;
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    section {
+      padding: 84px 0;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 56px;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 22px;
+    }
+
+    .sec-num {
+      font-family: 'Noto Serif', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .sec-head h2 {
+      font-family: 'Noto Serif', 'Noto Serif KR', serif;
+      font-size: clamp(27px, 3.8vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .sec-head .kr {
+      margin-left: auto;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 15px;
+      color: var(--ink-soft);
+      font-weight: 700;
+    }
+
+    /* ===== FEATURES — editorial rows ===== */
+    .feat-row {
+      display: grid;
+      grid-template-columns: 70px 1fr 1.4fr;
+      gap: 28px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+      transition: background .2s, padding-left .25s;
+    }
+
+    .feat-row:hover {
+      background: rgba(255, 255, 255, 0.55);
+      padding-left: 12px;
+    }
+
+    .feat-no {
+      font-family: 'Noto Serif', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .feat-row h3 {
+      font-family: 'Noto Serif', serif;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .feat-row h3 .kr {
+      display: block;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      font-weight: 700;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    .feat-row p {
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    /* ===== TOPIK SECTION ===== */
+    .topik-wrap {
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 4px;
+      padding: 64px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topik-wrap::before {
+      content: '급';
+      position: absolute;
+      right: -30px;
+      bottom: -90px;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 320px;
+      font-weight: 900;
+      color: rgba(250, 246, 239, 0.05);
+      line-height: 1;
+    }
+
+    .topik-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topik-kicker {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .topik-wrap h2 {
+      font-family: 'Noto Serif', 'Noto Serif KR', serif;
+      font-size: clamp(26px, 3.6vw, 38px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      margin-bottom: 18px;
+    }
+
+    .topik-wrap h2 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .topik-wrap>.topik-grid p {
+      color: #B5AC9D;
+      font-size: 15px;
+    }
+
+    .topik-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(250, 246, 239, 0.15);
+      border: 1px solid rgba(250, 246, 239, 0.15);
+    }
+
+    .stat {
+      background: var(--ink);
+      padding: 26px 22px;
+    }
+
+    .stat-num {
+      font-family: 'Noto Serif', serif;
+      font-size: 31px;
+      font-weight: 900;
+      color: var(--paper);
+      line-height: 1.15;
+    }
+
+    .stat-num em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .stat-lbl {
+      font-size: 12.5px;
+      color: #8E867A;
+      font-weight: 600;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      text-align: center;
+      padding: 30px 0 100px;
+    }
+
+    .cta-stamp {
+      display: inline-block;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--red);
+      border: 2px solid var(--red);
+      border-radius: 50%;
+      width: 72px;
+      height: 72px;
+      line-height: 68px;
+      transform: rotate(-12deg);
+      margin-bottom: 28px;
+      opacity: 0.85;
+    }
+
+    .cta h2 {
+      font-family: 'Noto Serif', 'Noto Serif KR', serif;
+      font-size: clamp(28px, 4.2vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: var(--ink-soft);
+      margin-bottom: 34px;
+      font-size: 16px;
+    }
+
+    .cta a.btn {
+      display: inline-block;
+      padding: 17px 42px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      border: 1.5px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .cta a.btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--ink);
+    }
+
+    .cta a.btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    footer {
+      border-top: 1.5px solid var(--ink);
+      padding: 30px 0;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    footer .f-kr {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 700;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 52px 0 48px;
+        gap: 56px;
+      }
+
+      .hero-bg-char {
+        font-size: 240px;
+        right: -80px;
+        top: -20px;
+      }
+
+      .topik-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .topik-wrap {
+        padding: 44px 30px;
+      }
+
+      .feat-row {
+        grid-template-columns: 44px 1fr;
+      }
+
+      .feat-row p {
+        grid-column: 2;
+      }
+
+      .sec-head .kr {
+        display: none;
+      }
+
+      .ticket {
+        width: 100%;
+      }
+
+      .ticket-cells {
+        flex: 1;
+        justify-content: space-between;
+      }
+
+      .t-cell {
+        min-width: 0;
+        flex: 1;
+        padding: 12px 6px;
+      }
+
+      .t-num {
+        font-size: 24px;
+      }
+
+      .signup-row {
+        flex-direction: column;
+        max-width: none;
+      }
+
+      .signup-row input {
+        border-right: 1.5px solid var(--ink);
+        border-bottom: none;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="marquee">
+    <div class="marquee-inner" id="marquee">
+      <span>TOPIK ACE</span><span class="dot">●</span>
+      <span>2026.07.15 НЭЭЛТ</span><span class="dot">●</span>
+      <span>한국어 — Монгол хэлээрээ</span><span class="dot">●</span>
+      <span>TOPIK I · II бэлтгэл</span><span class="dot">●</span>
+      <span>Offline үгийн сан</span><span class="dot">●</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <nav>
+      <div class="logo">Topik<em>Ace</em><span class="hanja">한국어</span></div>
+      <div class="nav-date">Нээлт: <b>2026.07.15</b></div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-bg-char">한</div>
+      <div class="hero-left">
+        <div class="kicker">Удахгүй · Google Play</div>
+        <h1>Солонгос хэлийг <span class="underline">монгол хэлээрээ</span> эзэмш</h1>
+        <p class="lede">Монгол хэлтэй суралцагчдад зориулсан анхны TOPIK бэлтгэлийн апп. Англиар дамжуулж сурах эрин
+          дууслаа.</p>
+
+        <div class="ticket" aria-label="Нээлт хүртэл үлдсэн хугацаа">
+          <div class="ticket-label">Нээлт</div>
+          <div class="ticket-cells">
+            <div class="t-cell">
+              <div class="t-num" id="cd-days">--</div>
+              <div class="t-lbl">Өдөр</div>
+            </div>
+            <div class="t-cell">
+              <div class="t-num" id="cd-hours">--</div>
+              <div class="t-lbl">Цаг</div>
+            </div>
+            <div class="t-cell">
+              <div class="t-num" id="cd-mins">--</div>
+              <div class="t-lbl">Мин</div>
+            </div>
+            <div class="t-cell">
+              <div class="t-num" id="cd-secs">--</div>
+              <div class="t-lbl">Сек</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="signup-row">
+          <input type="email" id="email-input" placeholder="Имэйл хаягаа оруулна уу" autocomplete="email">
+          <!-- honeypot: bot-ууд л бөглөнө -->
+          <input type="text" id="hp-input" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button id="signup-btn" onclick="submitEmail()">Мэдэгдэл авах</button>
+        </div>
+        <div class="signup-msg" id="signup-msg"></div>
+        <div class="signup-counter" id="signup-counter-wrap"><span class="live"></span><b id="signup-count">0</b> хүн
+          аль хэдийн бүртгүүлжээ</div>
+      </div>
+
+      <div class="hero-right">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="ph-status"><span>9:41</span><span>▮▮▮</span></div>
+            <div class="ph-title">Өнөөдрийн үгс · 7/12</div>
+            <div class="ph-progress"><i></i></div>
+            <div class="ph-card">
+              <div class="ph-kr">사과</div>
+              <div class="ph-rom">sa-gwa</div>
+              <div class="ph-divider"></div>
+              <div class="ph-mn">алим</div>
+            </div>
+            <div class="ph-btns">
+              <div class="ph-btn no">Мэдэхгүй</div>
+              <div class="ph-btn yes">Мэднэ ✓</div>
+            </div>
+          </div>
+          <div class="phone-tag">App Preview</div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container">
+    <section id="features">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2>Апп дотор юу байх вэ?</h2>
+        <span class="kr">기능 소개</span>
+      </div>
+
+      <div class="feat-row">
+        <div class="feat-no">①</div>
+        <h3>TOPIK бэлтгэл<span class="kr">시험 준비</span></h3>
+        <p>TOPIK I, II шалгалтын жинхэнэ форматтай дасгал тестүүд. Алдаа бүрээ монгол тайлбараар ойлгож, дараагийн удаад
+          давтахгүй болно.</p>
+      </div>
+      <div class="feat-row">
+        <div class="feat-no">②</div>
+        <h3>Offline үгийн сан<span class="kr">오프라인 단어장</span></h3>
+        <p>Интернетгүй ч ажиллана. Метронд, хичээл дээрээ, хаана ч үгсээ давт — дата урсгал зарцуулахгүй.</p>
+      </div>
+      <div class="feat-row">
+        <div class="feat-no">③</div>
+        <h3>Монгол тайлбар<span class="kr">몽골어 설명</span></h3>
+        <p>Дүрэм, үгийн утга, соёлын ялгааг монгол хэлээр ойлгомжтой тайлбарласан. Гурав дахь хэлээр дамжих
+          шаардлагагүй.</p>
+      </div>
+      <div class="feat-row">
+        <div class="feat-no">④</div>
+        <h3>Үнэгүй эхэл<span class="kr">무료 시작</span></h3>
+        <p>Үндсэн хичээл, үгийн сан бүрэн үнэгүй. Гүнзгий бэлтгэл хүссэн үедээ Premium-ээр өргөтгөнө.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="topik-wrap">
+        <div class="topik-grid">
+          <div>
+            <div class="topik-kicker">TOPIK 시험 준비</div>
+            <h2>Шалгалтаа <em>итгэлтэйгээр</em> өг</h2>
+            <p>Солонгост сурах, ажиллах, виз сунгуулах — бүгдийн түлхүүр нь TOPIK. Бид энэ замыг тань хамгийн ойлгомжтой
+              болгоно.</p>
+          </div>
+          <div class="topik-stats">
+            <div class="stat">
+              <div class="stat-num">1–6<em>급</em></div>
+              <div class="stat-lbl">Бүх түвшний үгийн сан</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num"><em>실전</em></div>
+              <div class="stat-lbl">Жинхэнэ шалгалтын формат</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">듣기·읽기</div>
+              <div class="stat-lbl">Сонсгол ба унших дадлага</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">100<em>%</em></div>
+              <div class="stat-lbl">Монгол хэл дээрх тайлбар</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-stamp">합격</div>
+      <h2>Эхний суралцагчдын нэг бол</h2>
+      <p>Имэйлээ үлдээгээд 7-р сарын 15-нд хамгийн түрүүнд мэдэгдэл аваарай.</p>
+      <a class="btn" href="#"
+        onclick="document.getElementById('email-input').focus(); window.scrollTo({top:0, behavior:'smooth'}); return false;">Бүртгүүлэх</a>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 TOPIK Ace · contact@topikace.app</span>
+      <span class="f-kr">몽골인을 위한 한국어 학습 앱</span>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       ТОХИРГОО — Supabase-ийн мэдээллээ энд оруулна
+       Supabase Dashboard → Project Settings → API хэсгээс:
+       - Project URL  → SUPABASE_URL
+       - anon public key → SUPABASE_ANON_KEY
+       Хоосон үлдээвэл demo горимоор (Claude artifact storage) ажиллана.
+       ============================================================ */
+    const SUPABASE_URL = 'https://xafgspyaloemcvsizyhi.supabase.co/rest/v1/';      // ж: 'https://abcdefgh.supabase.co'
+    const SUPABASE_ANON_KEY = 'sb_publishable_0zXYb0IMFwkF5Usnwnqebw_Ddh1QYNB'; // ж: 'eyJhbGciOi...'
+
+    const useSupabase = SUPABASE_URL.startsWith('https://') && SUPABASE_ANON_KEY.length > 20;
+
+    // Шинэ (sb_publishable_...) болон хуучин (eyJ... JWT) түлхүүрийг хоёуланг дэмжинэ:
+    // шинэ publishable key зөвхөн apikey header-ээр явна, хуучин JWT бол Bearer-ээр давхар явна
+    function sbHeaders(extra) {
+      const h = Object.assign({ 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' }, extra || {});
+      if (SUPABASE_ANON_KEY.startsWith('eyJ')) h['Authorization'] = 'Bearer ' + SUPABASE_ANON_KEY;
+      return h;
+    }
+
+    // duplicate marquee content for seamless loop
+    const mq = document.getElementById('marquee');
+    mq.innerHTML += mq.innerHTML;
+
+    // ===== COUNTDOWN to 2026-07-15 (KST) =====
+    const launchDate = new Date('2026-07-15T00:00:00+09:00').getTime();
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      const diff = launchDate - Date.now();
+      if (diff <= 0) {
+        ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id => document.getElementById(id).textContent = '0');
+        return;
+      }
+      document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+      document.getElementById('cd-hours').textContent = pad(Math.floor(diff / 3600000) % 24);
+      document.getElementById('cd-mins').textContent = pad(Math.floor(diff / 60000) % 60);
+      document.getElementById('cd-secs').textContent = pad(Math.floor(diff / 1000) % 60);
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // ===== EMAIL VALIDATION =====
+    function validEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    /* ============================================================
+       SUPABASE ГОРИМ — production
+       ============================================================ */
+    async function supabaseInsert(email) {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/waitlist', {
+        method: 'POST',
+        headers: sbHeaders({ 'Prefer': 'return=minimal' }),
+        body: JSON.stringify({ email: email })
+      });
+      if (res.status === 201) return 'ok';
+      if (res.status === 409) return 'duplicate';
+      // PostgREST duplicate-ийг заримдаа 409, заримдаа body доторх code 23505-аар буцаадаг
+      try {
+        const body = await res.json();
+        if (body && body.code === '23505') return 'duplicate';
+      } catch (e) { /* ignore */ }
+      return 'error';
+    }
+
+    async function supabaseCount() {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/rpc/waitlist_count', {
+        method: 'POST',
+        headers: sbHeaders(),
+        body: '{}'
+      });
+      if (!res.ok) throw new Error('count failed');
+      return await res.json(); // тоо буцаана
+    }
+
+    /* ============================================================
+       DEMO ГОРИМ — Claude artifact storage (Supabase тохируулаагүй үед)
+       ============================================================ */
+    function emailKey(email) {
+      return 'waitlist:' + email.toLowerCase().replace(/[\s/\\'"]/g, '_');
+    }
+
+    async function demoInsert(email) {
+      const key = emailKey(email);
+      try {
+        const prev = await window.storage.get(key, true);
+        if (prev) return 'duplicate';
+      } catch (e) { /* not found = ok */ }
+      await window.storage.set(key, JSON.stringify({
+        email: email,
+        date: new Date().toISOString()
+      }), true);
+      return 'ok';
+    }
+
+    async function demoCount() {
+      const res = await window.storage.list('waitlist:', true);
+      return (res && res.keys) ? res.keys.length : 0;
+    }
+
+    /* ============================================================
+       ЕРӨНХИЙ ЛОГИК
+       ============================================================ */
+    async function loadCount() {
+      try {
+        const n = useSupabase ? await supabaseCount() : await demoCount();
+        document.getElementById('signup-count').textContent = n;
+      } catch (e) {
+        // count авч чадахгүй бол counter-ийг нуух (хуудас эвдрэхгүй)
+        document.getElementById('signup-counter-wrap').style.display = 'none';
+      }
+    }
+
+    async function submitEmail() {
+      const input = document.getElementById('email-input');
+      const btn = document.getElementById('signup-btn');
+      const msg = document.getElementById('signup-msg');
+      const honeypot = document.getElementById('hp-input').value;
+      const email = input.value.trim();
+
+      msg.className = 'signup-msg';
+      msg.textContent = '';
+
+      // Honeypot бөглөгдсөн бол bot — амжилттай мэт дүр үзүүлээд хадгалахгүй
+      if (honeypot !== '') {
+        msg.className = 'signup-msg ok';
+        msg.textContent = 'Баярлалаа! Апп гармагц танд мэдэгдэнэ. 🎉';
+        input.value = '';
+        return;
+      }
+
+      if (!validEmail(email)) {
+        msg.className = 'signup-msg err';
+        msg.textContent = 'Имэйл хаягаа зөв оруулна уу.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Түр хүлээнэ үү…';
+
+      try {
+        const result = useSupabase ? await supabaseInsert(email) : await demoInsert(email);
+
+        if (result === 'duplicate') {
+          msg.className = 'signup-msg ok';
+          msg.textContent = 'Та аль хэдийн бүртгүүлсэн байна! 🎉';
+        } else if (result === 'ok') {
+          msg.className = 'signup-msg ok';
+          msg.textContent = 'Баярлалаа! Апп гармагц танд мэдэгдэнэ. 🎉';
+          input.value = '';
+        } else {
+          throw new Error('insert failed');
+        }
+        await loadCount();
+      } catch (e) {
+        msg.className = 'signup-msg err';
+        msg.textContent = 'Алдаа гарлаа. Дахин оролдоно уу.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Мэдэгдэл авах';
+      }
+    }
+
+    document.getElementById('email-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitEmail();
+    });
+
+    loadCount();
+  </script>
+</body>
+
+</html>

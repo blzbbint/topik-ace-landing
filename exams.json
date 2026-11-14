@@ -1,0 +1,14 @@
+[
+  {"round": "104회", "format": "PBT", "examDate": "2026-01-11", "regStart": "2025-12-09", "regEnd": "2025-12-15"},
+  {"round": "11회",  "format": "IBT", "examDate": "2026-02-28", "regStart": "2025-12-16", "regEnd": "2025-12-22"},
+  {"round": "12회",  "format": "IBT", "examDate": "2026-03-21", "regStart": "2026-01-13", "regEnd": "2026-01-19"},
+  {"round": "105회", "format": "PBT", "examDate": "2026-04-12", "regStart": "2026-01-27", "regEnd": "2026-02-02"},
+  {"round": "106회", "format": "PBT", "examDate": "2026-05-17", "regStart": "2026-03-10", "regEnd": "2026-03-16"},
+  {"round": "13회",  "format": "IBT", "examDate": "2026-06-13", "regStart": "2026-04-07", "regEnd": "2026-04-13"},
+  {"round": "107회", "format": "PBT", "examDate": "2026-07-05", "regStart": "2026-05-12", "regEnd": "2026-05-18"},
+  {"round": "14회",  "format": "IBT", "examDate": "2026-09-12", "regStart": "2026-07-07", "regEnd": "2026-07-13"},
+  {"round": "108회", "format": "PBT", "examDate": "2026-10-18", "regStart": "2026-08-04", "regEnd": "2026-08-10"},
+  {"round": "15회",  "format": "IBT", "examDate": "2026-10-24", "regStart": "2026-08-18", "regEnd": "2026-08-24"},
+  {"round": "109회", "format": "PBT", "examDate": "2026-11-15", "regStart": "2026-09-01", "regEnd": "2026-09-07"},
+  {"round": "16회",  "format": "IBT", "examDate": "2026-11-28", "regStart": "2026-09-15", "regEnd": "2026-09-21"}
+]
